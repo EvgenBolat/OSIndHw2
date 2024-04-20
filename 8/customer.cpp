@@ -33,7 +33,7 @@ void Customer()
         printf("Can\'t generate key\n");
         exit(-1);
     }
-    if ((semid = semget(key, 1, 0666 | IPC_CREAT)) < 0)
+    if ((semid = semget(key, 2, 0666 | IPC_CREAT)) < 0)
     {
         printf("Can\'t get semid\n");
         exit(-1);
@@ -117,18 +117,19 @@ int i = 0;
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        std::cout << "Неверное количество аргументов!" << std::endl;
-        return 0;
-    }
-    if (!is_number(argv[1]) || std::stoi(argv[1]) <= 0)
-    {
-        std::cout << "Второй аргумент должен быть положительным числом!";
-        return 0;
-    }
-    // переводим аргумент из командной строки в число
-    int number = std::stoi(argv[1]);
+    // if (argc != 2)
+    // {
+    //     std::cout << "Неверное количество аргументов!" << std::endl;
+    //     return 0;
+    // }
+    // if (!is_number(argv[1]) || std::stoi(argv[1]) <= 0)
+    // {
+    //     std::cout << "Второй аргумент должен быть положительным числом!";
+    //     return 0;
+    // }
+    // // переводим аргумент из командной строки в число
+    // int number = std::stoi(argv[1]);
+    int number = 5;
     pid_t pid;
     pid = fork();
     if (pid == -1)
@@ -137,7 +138,7 @@ int main(int argc, char *argv[])
     }
     else if (pid == 0)
     {
-        makeproc(number);
+        makeproc(5);
     }
     while (true)
     {

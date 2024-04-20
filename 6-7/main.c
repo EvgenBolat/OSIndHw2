@@ -21,7 +21,7 @@ void Customer()
         return;
     }
     sem_t *p_sem1 = mmap(0, sizeof(sem_t), PROT_WRITE | PROT_READ, MAP_SHARED, shmid, 0);
-    sem_t *p_sem2 = mmap(0, sizeof(sem_t), PROT_WRITE | PROT_READ, MAP_SHARED, shmid, 0);
+    sem_t *p_sem2 = mmap(0, sizeof(sem_t), PROT_WRITE | PROT_READ, MAP_SHARED, shmid, sizeof(sem_t));
 
     int k = rand() % 5 + 1;
 
@@ -156,7 +156,7 @@ int main(int argc, char *argv[])
         printf("Неверное количество аргументов!");
         return 0;
     }
-    if (!is_number(argv[1]) || atoi(argv[1]) <= 0)
+    if (atoi(argv[1]) <= 0)
     {
         printf("Второй аргумент должен быть положительным числом!");
         return 0;
