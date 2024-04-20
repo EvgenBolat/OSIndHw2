@@ -117,19 +117,18 @@ int i = 0;
 
 int main(int argc, char *argv[])
 {
-    // if (argc != 2)
-    // {
-    //     std::cout << "Неверное количество аргументов!" << std::endl;
-    //     return 0;
-    // }
-    // if (!is_number(argv[1]) || std::stoi(argv[1]) <= 0)
-    // {
-    //     std::cout << "Второй аргумент должен быть положительным числом!";
-    //     return 0;
-    // }
-    // // переводим аргумент из командной строки в число
-    // int number = std::stoi(argv[1]);
-    int number = 5;
+    if (argc != 2)
+    {
+        std::cout << "Неверное количество аргументов!" << std::endl;
+        return 0;
+    }
+    if (!is_number(argv[1]) || std::stoi(argv[1]) <= 0)
+    {
+        std::cout << "Второй аргумент должен быть положительным числом!";
+        return 0;
+    }
+    // переводим аргумент из командной строки в число
+    int number = std::stoi(argv[1]);
     pid_t pid;
     pid = fork();
     if (pid == -1)
