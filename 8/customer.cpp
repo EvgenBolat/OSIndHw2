@@ -98,7 +98,7 @@ void Customer()
 int Nproc;
 pid_t t[100];
 
-void CreateProcesses(int p)
+void makeproc(int p)
 {
     Nproc = p;
     for (int i = 0; i < p; i++)
@@ -107,7 +107,7 @@ void CreateProcesses(int p)
         if (t[i] == 0)
         {
             Customer();
-            CreateProcesses(p - 1);
+            makeproc(p - 1);
         }
     }
     return;
@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
     }
     else if (pid == 0)
     {
-        CreateProcesses(number);
+        makeproc(number);
     }
     while (true)
     {
